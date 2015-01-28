@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Account Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Note</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @account_transactions.each do |account_transaction| %>
+      <tr>
+        <td><%= account_transaction.note %></td>
+        <td><%= account_transaction.debit %></td>
+        <td><%= account_transaction.credit %></td>
+        <td><%= link_to 'Show', account_transaction %></td>
+        <td><%= link_to 'Edit', edit_account_transaction_path(account_transaction) %></td>
+        <td><%= link_to 'Destroy', account_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p>Your current balance is: <%=@total_amount%></p>
+<p>There have been a total of <%=@transaction_number%> transactions.</p>
+
+<%= link_to 'New Account Transaction', new_account_transaction_path %>
