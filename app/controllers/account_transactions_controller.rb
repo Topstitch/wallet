@@ -7,6 +7,9 @@ class AccountTransactionsController < ApplicationController
     @account_transactions = AccountTransaction.all
     @transaction_number = @account_transactions.length
     @total_amount = @account_transactions.reduce(0) {|s, i| s + i.credit.to_f - i.debit.to_f}
+    if @total_amount < 0
+      @alert = "ALERT!!! YOU CURRENTLY HAVE A NEGATIVE BALANCE!"
+    end
   end
 
   # GET /account_transactions/1
