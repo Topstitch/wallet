@@ -16,8 +16,8 @@
     <% @account_transactions.each do |account_transaction| %>
       <tr>
         <td><%= account_transaction.note %></td>
-        <td><%= account_transaction.debit %></td>
-        <td><%= account_transaction.credit %></td>
+        <td><%= number_to_currency(account_transaction.debit) %></td>
+        <td><%= number_to_currency(account_transaction.credit) %></td>
         <td><%= link_to 'Show', account_transaction %></td>
         <td><%= link_to 'Edit', edit_account_transaction_path(account_transaction) %></td>
         <td><%= link_to 'Destroy', account_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,7 +28,7 @@
 
 <br>
 
-<p>Your current balance is: <%=@total_amount%></p>
+<p>Your current balance is: <%= number_to_currency(@total_amount) %></p>
 <span><%=@alert%></span>
 <p>There have been a total of <%=@transaction_number%> transactions.</p>
 
