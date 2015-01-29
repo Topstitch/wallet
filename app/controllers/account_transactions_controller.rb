@@ -6,7 +6,7 @@ class AccountTransactionsController < ApplicationController
   def index
     @account_transactions = AccountTransaction.all
     @transaction_number = @account_transactions.length
-    @total_amount = @account_transactions.reduce(0) {|s, i| s + i.credit.to_f - i.debit.to_f}
+    @total_amount = @account_transactions.reduce(0) {|s, i| s + i.credit.to_f - i.debit.to_f} #FIX LATER
     if @total_amount < 0
       @alert = "ALERT!!! YOU CURRENTLY HAVE A NEGATIVE BALANCE!"
     end
